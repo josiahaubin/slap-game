@@ -5,9 +5,9 @@ let targetObj = {
   inventory: []
 }
 let items = {
-  nanoBoost: { name: "Ana's Nano Boost", modifier: -5, description: "Powered Up!!" },
-  repairPack: { name: "Brigitte's Repair Pack", modifier: 1, description: "Patching you up" },
-  shield: { name: "Reinhardt's Barrier Field", modifier: 5, description: "Get behind my shield" }
+  nanoBoost: { name: "Ana's Nano Boost", modifier: 5, description: "Powered Up!!" },
+  repairPack: { name: "Brigitte's Repair Pack", modifier: -1, description: "Patching you up" },
+  shield: { name: "Reinhardt's Barrier Field", modifier: -5, description: "Get behind my shield" }
 }
 
 //This function lets the user fire D.Va's fusion cannons, dealing 1 damage to reaper
@@ -54,6 +54,17 @@ function addMods() {
     totalModifier = totalModifier + targetObj.inventory[index].modifier;
   }
   return totalModifier;
+}
+
+//This function allows the user to give the target player an item
+function giveItem(itemSelected) {
+  if (itemSelected == items.nanoBoost.name) {
+    giveNanoBoost();
+  } else if (itemSelected == items.repairPack.name) {
+    giveRepairPack();
+  } else {
+    giveShield();
+  }
 }
 
 //This function updates the screen
