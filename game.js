@@ -1,20 +1,31 @@
-let health = 100;
+let targetObj = {
+  name: 'Reaper',
+  health: 100,
+  hits: 0
+}
 
 function fusionCannons() {
-  health = health - 1
+  targetObj.health--
+  targetObj.hits++
   update();
 }
 function microMissles() {
-  health = health - 5
+  targetObj.health -= 5
+  targetObj.hits++
   update();
 }
 function selfDestruct() {
-  health = health - 10
+  targetObj.health -= 10
+  targetObj.hits++
   update();
 }
 function update() {
   let healthElem = document.getElementById('health');
+  let targetElem = document.getElementById('targetName');
+  let hitsElem = document.getElementById('hits');
 
-  healthElem.innerText = health.toString();
+  healthElem.innerText = targetObj.health.toString();
+  targetElem.innerText = targetObj.name;
+  hitsElem.innerText = targetObj.hits.toString();
 }
 update();
