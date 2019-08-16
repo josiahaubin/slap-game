@@ -1,7 +1,13 @@
 let targetObj = {
   name: 'Reaper',
   health: 100,
-  hits: 0
+  hits: 0,
+  inventory: []
+}
+let items = {
+  damageAmplification: { name: "Zenyatta's Discord Orb", modifier: 2, description: "Damage is amplified" },
+  damageBoost: { name: "Ana's Nano Boost", modifier: 5, description: "Powered UP!" },
+  shield: { name: "Reinhardt's Barrier Field", modifier: 3, description: "Get behind my shield" }
 }
 
 function fusionCannons() {
