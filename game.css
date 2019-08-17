@@ -4,3 +4,8 @@
 .img-reaper {
   height: 65vh;
 }
+body {
+  background-image: url('https://static.playoverwatch.com/img/pages/maps/images/dorado.jpg');
+  background-size: cover;
+  color: white;
+}
