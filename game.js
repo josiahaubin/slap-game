@@ -7,13 +7,14 @@ let targetObj = {
 let items = {
   nanoBoost: { name: "Ana's Nano Boost", modifier: 5, description: "Powered Up!!" },
   repairPack: { name: "Brigitte's Repair Pack", modifier: -1, description: "Patching you up" },
-  shield: { name: "Reinhardt's Barrier Field", modifier: -5, description: "Get behind my shield" }
+  shield: { name: "Reinhardt's Barrier Field", modifier: -2, description: "Get behind my shield" }
 }
 
 //This function lets the user fire D.Va's fusion cannons, dealing 1 damage to reaper
 function fusionCannons() {
-  targetObj.health -= 1 + addMods();
+  targetObj.health -= 2 + addMods();
   targetObj.hits++
+  checkHealth(targetObj.health)
   update();
 }
 
@@ -21,6 +22,7 @@ function fusionCannons() {
 function microMissles() {
   targetObj.health -= 5 + addMods();
   targetObj.hits++
+  checkHealth(targetObj.health)
   update();
 }
 
@@ -28,6 +30,7 @@ function microMissles() {
 function selfDestruct() {
   targetObj.health -= 10 + addMods();
   targetObj.hits++
+  checkHealth(targetObj.health)
   update();
 }
 
@@ -44,6 +47,11 @@ function giveNanoBoost() {
 //This function gives reaper damage reduction
 function giveRepairPack() {
   targetObj.inventory.push(items.repairPack);
+}
+
+//This function removes items
+function removeItems() {
+  targetObj.inventory.pop();
 }
 
 //This function adds up the total damage reduction for reaper
@@ -65,6 +73,20 @@ function giveItem(itemSelected) {
   } else {
     giveShield();
   }
+}
+
+//This function will check the targets health and if it is at zero it will tell the user that D.Va won
+function checkHealth(targetHealth) {
+  if (targetHealth <= 0) {
+    alert("Elimination: D.Va wins!")
+  }
+}
+
+//This function sets the health and hits values back to the orginal settings
+function replay() {
+  targetObj.health = 100;
+  targetObj.hits = 0;
+  update();
 }
 
 //This function updates the screen

@@ -16,6 +16,7 @@
     <div class="row text-center my-4">
       <div class="col">
         <h1>Overwatch Game</h1>
+        <button type="button" class="btn btn-light" onclick="replay()">Replay</button>
       </div>
     </div>
     <div class="row text-center">
@@ -41,7 +42,7 @@
           alt="" class="img-reaper mt-1">
       </div>
     </div>
-    <div id="items" class="row text-center">
+    <div id="items" class="row text-center my-3">
       <div class="col-6">
         <button type="button" class="btn btn-success" onclick="giveItem(`Ana's Nano Boost`)">Ana's Nano Boost</button>
       </div>
@@ -52,8 +53,12 @@
           Barrier Field</button>
       </div>
     </div>
+    <div class="row text-center">
+      <div class="col">
+        <button type="button" class="btn btn-danger" onclick="removeItems()">Remove last item added</button>
+      </div>
+    </div>
   </div>
-
   <script src="game.js"></script>
 </body>
 
