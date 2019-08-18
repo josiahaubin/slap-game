@@ -2,7 +2,8 @@ let targetObj = {
   name: 'Reaper',
   health: 100,
   hits: 0,
-  inventory: []
+  inventory: [],
+  damage_boost: 0
 }
 let items = {
   nanoBoost: { name: "Ana's Nano Boost", modifier: 5, description: "Powered Up!!" },
@@ -51,7 +52,11 @@ function giveRepairPack() {
 
 //This function removes items
 function removeItems() {
-  targetObj.inventory.pop();
+  let itemRemoved = targetObj.inventory.pop();
+  if (targetObj.damage_boost > 0 || targetObj.damage_boost < 0) {
+    targetObj.damage_boost -= itemRemoved.modifier;
+  }
+  update()
 }
 
 //This function adds up the total damage reduction for reaper
@@ -68,11 +73,15 @@ function addMods() {
 function giveItem(itemSelected) {
   if (itemSelected == items.nanoBoost.name) {
     giveNanoBoost();
+    targetObj.damage_boost += items.nanoBoost.modifier;
   } else if (itemSelected == items.repairPack.name) {
     giveRepairPack();
+    targetObj.damage_boost += items.repairPack.modifier;
   } else {
     giveShield();
+    targetObj.damage_boost += items.shield.modifier;
   }
+  update();
 }
 
 //This function will check the targets health and if it is at zero it will tell the user that D.Va won
@@ -87,6 +96,7 @@ function checkHealth(targetHealth) {
 function replay() {
   targetObj.health = 100;
   targetObj.hits = 0;
+  targetObj.damage_boost = 0;
   update();
 }
 
@@ -95,9 +105,11 @@ function update() {
   let healthElem = document.getElementById('health');
   let targetElem = document.getElementById('targetName');
   let hitsElem = document.getElementById('hits');
+  let damageBoostElem = document.getElementById('damageBoost');
 
   healthElem.innerText = targetObj.health.toString();
   targetElem.innerText = targetObj.name;
   hitsElem.innerText = targetObj.hits.toString();
+  damageBoostElem.innerText = targetObj.damage_boost.toString();
 }
 update();
