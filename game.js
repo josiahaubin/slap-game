@@ -79,6 +79,7 @@ function giveItem(itemSelected) {
 function checkHealth(targetHealth) {
   if (targetHealth <= 0) {
     alert("Elimination: D.Va wins!")
+    replay();
   }
 }
 
