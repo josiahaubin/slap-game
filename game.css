@@ -1,5 +1,6 @@
 .img-dva {
   height: 55vh;
+  transform: scaleX(-1)
 }
 .img-reaper {
   height: 65vh;
