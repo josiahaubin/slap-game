@@ -96,7 +96,6 @@ function checkHealth(targetHealth) {
 function replay() {
   targetObj.health = 100;
   targetObj.hits = 0;
-  targetObj.damage_boost = 0;
   update();
 }
 
